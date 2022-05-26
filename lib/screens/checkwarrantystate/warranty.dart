@@ -10,11 +10,21 @@ class warranty extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = Manger().getsize(context);
     Color primary = kprimarycolor;
-    Color secondary = Theme.of(context).colorScheme.secondary;
+    Color secondary = ksecondrycolor;
     Color backgroundcolor = kbackground;
     return Scaffold(
       /*dashboardappbar().Appbarwigit(context),*/
-      appBar: Customeappbar(),
+      appBar: AppBar(
+        title: Image.asset(
+          innerGreenGetFix,
+          width: size.width * 0.6,
+        ),
+        centerTitle: true,
+        backgroundColor: kprimarycolor,
+        toolbarHeight: size.height * 0.15,
+        automaticallyImplyLeading: false,
+        elevation: 0,
+      ), //Customeappbar(),
       body: Stack(
         children: [
           Container(

@@ -112,7 +112,7 @@ class _BodyState extends State<Body> {
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                   side: BorderSide(
-                    color: Theme.of(context).colorScheme.secondary,
+                    color: ksecondrycolor,
                     width: 2.0,
                   ),
                 ),
@@ -175,11 +175,11 @@ class _BodyState extends State<Body> {
               ),
         ),
         boxpadding(size, 0.03),
-        signin(size),
+        username(size),
         boxpadding(size, 0.02),
         password(size),
         boxpadding(size, 0.02),
-        
+
         loginbutton(size),
         boxpadding(size, 0.02),
         Container(
@@ -261,7 +261,9 @@ class _BodyState extends State<Body> {
       child: InkWell(
         child: ElevatedButton(
             style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(ksecondrycolor),
+              backgroundColor: MaterialStateProperty.all(
+                ksecondrycolor,
+              ),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
                 RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
@@ -367,7 +369,7 @@ class _BodyState extends State<Body> {
             contentPadding: const EdgeInsets.symmetric(vertical: 0.0),
             prefixIcon: Icon(
               Icons.vpn_key,
-              color: Theme.of(context).colorScheme.secondary,
+              color: ksecondrycolor,
             ),
             focusedBorder: OutlineInputBorder(
               borderSide: new BorderSide(
@@ -393,7 +395,7 @@ class _BodyState extends State<Body> {
     );
   }
 
-  Container signin(Size size) {
+  Container username(Size size) {
     return Container(
       width: size.width * 0.70,
       //height: size.height * 0.06,
@@ -406,8 +408,10 @@ class _BodyState extends State<Body> {
             filled: true,
             fillColor: Colors.grey[80],
             contentPadding: const EdgeInsets.symmetric(vertical: 0),
-            prefixIcon: Icon(Icons.person,
-                color: Theme.of(context).colorScheme.secondary),
+            prefixIcon: Icon(
+              Icons.person,
+              color: ksecondrycolor,
+            ),
             focusedBorder: OutlineInputBorder(
               borderSide: new BorderSide(
                 width: 0,
@@ -437,12 +441,10 @@ class _BodyState extends State<Body> {
 
   Container topImage(Size size) {
     return Container(
-      child: Image.asset(
-        "Images/GetFix.png",
-        width: size.width,
-        height: size.height * 0.2,
-        alignment: Alignment.center,
-      ),
+      child: GreenGetFix,
+      width: size.width,
+      height: size.height * 0.2,
+      alignment: Alignment.center,
     );
   }
 

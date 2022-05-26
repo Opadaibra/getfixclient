@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 
-Color kprimarycolor = Color(0xFF37506C);
-Color ksecondrycolor = Color(0xFFFF715A);
+Color kprimarycolor = Color(0xFF6EBF8B); // Color(0xFF37506C);
+Color ksecondrycolor = Color.fromARGB(255, 205, 206, 181).withAlpha(255);
 Color kdefaultshadow = Colors.black12.withAlpha(50);
+Image GreenGetFix = Image.asset("Images/GreenGetFix.png");
+Image OrnageGetFix = Image.asset("Images/GetFix.png");
+String whitGetFix = "Images/whiteGetFix.png";
+Padding defaultpadd = Padding(padding: EdgeInsets.all(10));
+String innerGreenGetFix = "Images/whiteinnerGetFix.png";
 Color kbackground = Colors.white;
 Color kerror = Colors.red;
 double kdefaultpadding = 20.0;

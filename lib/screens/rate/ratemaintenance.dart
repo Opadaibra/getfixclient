@@ -11,11 +11,11 @@ class Ratemaintenance extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = Manger().getsize(context);
     Color primary = kprimarycolor;
-    Color secondary = Theme.of(context).colorScheme.secondary;
+    Color secondary = ksecondrycolor;
     Color backgroundcolor = kbackground;
     return Scaffold(
       /*dashboardappbar().Appbarwigit(context),*/
-      appBar: AppBar(
+      /*appBar: AppBar(
           backgroundColor: kprimarycolor,
           centerTitle: true,
           shape: RoundedRectangleBorder(
@@ -31,6 +31,7 @@ class Ratemaintenance extends StatelessWidget {
                   .textTheme
                   .titleMedium!
                   .copyWith(color: kbackground, fontWeight: FontWeight.bold))),
+      */
       body: Stack(
         children: [
           Container(

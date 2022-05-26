@@ -33,12 +33,16 @@ class _MyAppState extends State<MyApp> {
       shadowColor: Colors.grey[200],
       primaryColor: kprimarycolor,
       backgroundColor: Colors.white,
-      dividerColor: Colors.white54, colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey).copyWith(secondary: Color(0xffFF715A)),
+      dividerColor: Colors.white54,
+      colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blueGrey)
+          .copyWith(secondary: Color(0xffFF715A)),
     );
     ThemeData darktheme = ThemeData(
       primaryColor: Color(0xFF053F5E),
       backgroundColor: const Color(0xFF212121),
-      dividerColor: Colors.black12, colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey).copyWith(secondary: Color(0xff4B89F1)),
+      dividerColor: Colors.black12,
+      colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.grey)
+          .copyWith(secondary: Color(0xff4B89F1)),
     );
     return LocaleBuilder(
       builder: (locale) => MaterialApp(
@@ -56,6 +60,7 @@ class _MyAppState extends State<MyApp> {
   getmysite() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     mysite = pref.getStringList("key")!;
+
     if (mysite != null) {
       sitecount = mysite.length;
     } else

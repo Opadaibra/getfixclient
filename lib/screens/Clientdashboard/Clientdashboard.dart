@@ -3,7 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_locales/flutter_locales.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:getfix/Mywidgits/Floatingbutton.dart';
-import 'package:getfix/screens/SettingsPage/Settings.dart';
+import 'package:getfix/screens/Settings/Settings.dart';
 import 'package:getfix/screens/addsite/Addsite.dart';
 import 'package:getfix/screens/checkwarrantystate/warranty.dart';
 import 'package:getfix/screens/constants/Watermark.dart';
@@ -20,7 +20,7 @@ class Clientdashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = Manger().getsize(context);
     Color primary = kprimarycolor;
-    Color secondary = Theme.of(context).colorScheme.secondary;
+    Color secondary = ksecondrycolor;
     Color backgroundcolor = kbackground;
     bool paddingfloatbutton = false;
     return Scaffold(
@@ -29,7 +29,7 @@ class Clientdashboard extends StatelessWidget {
       //appBar: dashboardappbar().Appbarwigit(context),
       appBar: AppBar(
         title: Image.asset(
-          'Images/whiteGetFix.png',
+          innerGreenGetFix,
           width: size.width * 0.6,
         ),
         centerTitle: true,

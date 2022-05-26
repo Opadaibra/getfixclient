@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:getfix/Mywidgits/modifedappbar.dart';
 import 'package:getfix/screens/constants/constant.dart';
 
 class Maintenanceidbody extends StatefulWidget {
@@ -10,27 +11,27 @@ class Maintenanceidbody extends StatefulWidget {
 }
 
 class _MaintenanceidbodyState extends State<Maintenanceidbody> {
+  
   @override
   Widget build(BuildContext context) {
     Size size = Manger().getsize(context);
+    var widgiticon = Icon(
+                              Icons.numbers_rounded,
+                              color: kbackground,
+                              size: size.width * 0.1,
+                            );
+    var localeText = LocaleText(
+                        "maintenanceid",
+                        style: TextStyle(
+                            color: kbackground,
+                            fontWeight: FontWeight.bold,
+                            fontSize: size.width * 0.05),
+                      );
     return SingleChildScrollView(
       child: Container(
         child: Column(
           children: [
-            padding2(size, 0.01),
-            Container(
-              padding: EdgeInsetsDirectional.only(start: size.width * 0.04),
-              alignment: AlignmentDirectional.topStart,
-              child: LocaleText('maintenanceid',
-                  textAlign: TextAlign.right,
-                  style: Manger().styleofText(
-                    kprimarycolor,
-                    false,
-                    size.width * 0.05,
-                    context,
-                    true,
-                  )),
-            ),
+            modiefedappbar(size: size, widgiticon: widgiticon, localeText: localeText),
             padding2(size, 0.1),
           ],
         ),
@@ -41,3 +42,4 @@ class _MaintenanceidbodyState extends State<Maintenanceidbody> {
   Padding padding2(Size size, double decrease) =>
       Padding(padding: EdgeInsets.only(top: size.height * decrease));
 }
+

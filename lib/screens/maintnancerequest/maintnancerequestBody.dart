@@ -33,20 +33,9 @@ class _maintnancerequestState extends State<MaintnancerequestBody> {
     );
     return Column(children: [
       sitedrobdowbutton(size, context),
-      padding2(size, 0.01),
+      defaultpadd,
       machin(context, size),
-      Container(
-          child: anybuttonpressed()
-              ? ListTile(
-                  title: LocaleText(
-                  "fillreq",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline6!
-                      .copyWith(color: kprimarycolor),
-                  textAlign: TextAlign.center,
-                ))
-              : null),
+      defaultpadd,
       Expanded(child: body(size))
     ]);
   }
@@ -81,9 +70,8 @@ class _maintnancerequestState extends State<MaintnancerequestBody> {
                   boxShadow: [
                     BoxShadow(
                         offset: Offset(0, 10),
-                        blurStyle: BlurStyle.normal,
-                        blurRadius: 30,
-                        color: kprimarycolor.withOpacity(0.8))
+                        blurRadius: 20,
+                        color: Colors.black12.withOpacity(0.23))
                   ]),
               child: Container(
                   alignment: Alignment.center,
@@ -147,7 +135,7 @@ class _maintnancerequestState extends State<MaintnancerequestBody> {
                 shape: BeveledRectangleBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
-                color: Theme.of(context).colorScheme.secondary,
+                color: ksecondrycolor,
                 child: Column(
                   children: [
                     Text(
@@ -204,68 +192,91 @@ class _maintnancerequestState extends State<MaintnancerequestBody> {
 
   Container machin(BuildContext context, Size size) {
     return Container(
-      height: size.height * 0.1,
-      margin: EdgeInsets.symmetric(horizontal: 10),
+      height: size.height * 0.25,
+      margin: EdgeInsets.symmetric(horizontal: 20),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: kprimarycolor.withOpacity(0.25),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+          borderRadius: BorderRadius.circular(20),
+          color: kbackground,
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 20, color: ksecondrycolor, offset: Offset(0, 10))
+          ]),
+      child: Column(
         children: [
-          IconButton(
-            icon: Image.asset(
-              "Images/freazer.png",
-              color: arr[0] == true
-                  ? kprimarycolor
-                  : Theme.of(context).colorScheme.secondary,
-            ),
-            onPressed: () {
-              setState(() {
-                arr = [!arr[0], false, false];
-              });
-            },
-            iconSize: size.width * 0.2,
-            splashRadius: size.width * 0.1,
-            highlightColor: kprimarycolor,
-            //   splashColor: kprimarycolor,
+          Padding(padding: EdgeInsets.all(5)),
+          LocaleText(
+            "pick",
+            style: TextStyle(
+                color: kprimarycolor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold),
           ),
-          Padding(padding: EdgeInsetsDirectional.only(start: kdefaultpadding)),
-          IconButton(
-            icon: Image.asset(
-              "Images/wachmachine.png",
-              color: arr[1] == true
-                  ? kprimarycolor
-                  : Theme.of(context).colorScheme.secondary,
-            ),
-            onPressed: () {
-              setState(() {
-                arr = [false, !arr[1], false];
-                //  wachmachin = !wachmachin;
-              });
-            },
-            iconSize: size.width * 0.2,
-            splashRadius: size.width * 0.1,
-            highlightColor: kprimarycolor,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                icon: Image.asset(
+                  "Images/freazer.png",
+                  color: arr[0] == true ? kprimarycolor : ksecondrycolor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    arr = [!arr[0], false, false];
+                  });
+                },
+                iconSize: size.width * 0.2,
+                splashRadius: size.width * 0.1,
+                highlightColor: kprimarycolor,
+                //   splashColor: kprimarycolor,
+              ),
+              Padding(
+                  padding: EdgeInsetsDirectional.only(start: kdefaultpadding)),
+              IconButton(
+                icon: Image.asset(
+                  "Images/wachmachine.png",
+                  color: arr[1] == true ? kprimarycolor : ksecondrycolor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    arr = [false, !arr[1], false];
+                    //  wachmachin = !wachmachin;
+                  });
+                },
+                iconSize: size.width * 0.2,
+                splashRadius: size.width * 0.1,
+                highlightColor: kprimarycolor,
+              ),
+              Padding(
+                  padding: EdgeInsetsDirectional.only(start: kdefaultpadding)),
+              IconButton(
+                icon: Image.asset(
+                  "Images/aircooler.png",
+                  color: arr[2] == true ? kprimarycolor : ksecondrycolor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    // aircooler = !aircooler;
+                    arr = [false, false, !arr[2]];
+                  });
+                },
+                iconSize: size.width * 0.2,
+                splashRadius: size.width * 0.1,
+                highlightColor: kprimarycolor,
+              ),
+            ],
           ),
-          Padding(padding: EdgeInsetsDirectional.only(start: kdefaultpadding)),
-          IconButton(
-            icon: Image.asset(
-              "Images/aircooler.png",
-              color: arr[2] == true
-                  ? kprimarycolor
-                  : Theme.of(context).colorScheme.secondary,
-            ),
-            onPressed: () {
-              setState(() {
-                // aircooler = !aircooler;
-                arr = [false, false, !arr[2]];
-              });
-            },
-            iconSize: size.width * 0.2,
-            splashRadius: size.width * 0.1,
-            highlightColor: kprimarycolor,
-          ),
+          Container(
+              child: anybuttonpressed()
+                  ? ListTile(
+                      title: LocaleText(
+                      "fillreq",
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline6!
+                          .copyWith(color: kprimarycolor),
+                      textAlign: TextAlign.center,
+                    ))
+                  : null),
         ],
       ),
     );
@@ -277,10 +288,9 @@ class _maintnancerequestState extends State<MaintnancerequestBody> {
       child: LocaleText(
         "choosemainmachine",
         textAlign: TextAlign.start,
-        style: Theme.of(context)
-            .textTheme
-            .headline6!
-            .copyWith(color: ksecondrycolor),
+        style: Theme.of(context).textTheme.headline6!.copyWith(
+              color: ksecondrycolor,
+            ),
         //style: Manger().styleofText(kprimarycolor, false, 20, context, false),
       ),
     );
@@ -289,9 +299,15 @@ class _maintnancerequestState extends State<MaintnancerequestBody> {
   Container fillorders(int type, Size size) {
     return Container(
       margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: kprimarycolor.withOpacity(0.25)),
+      // decoration: BoxDecoration(
+      //     borderRadius: BorderRadius.circular(20),
+      //     color: kbackground,
+      //     boxShadow: [
+      //       BoxShadow(
+      //         blurRadius: 25,
+      //         color: kprimarycolor,
+      //       )
+      //     ]),
       child: SingleChildScrollView(
           child: Column(children: [
         sizeofmachine(size),

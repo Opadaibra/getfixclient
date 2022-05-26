@@ -53,7 +53,7 @@ class _CustomeappbarState extends State<Customeappbar> {
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(left: size.width * 0.05),
                   child: Image.asset(
-                    'Images/whiteGetFix.png',
+                    innerGreenGetFix,
                     width: size.width * 0.7,
                   ),
                 ),
@@ -124,8 +124,7 @@ class _CustomeappbarState extends State<Customeappbar> {
       menuMaxHeight: size.height * 0.5,
       //itemHeight: size.height * 0.2,
       isExpanded: false,
-      style: Manger().styleofText(
-          Theme.of(context).colorScheme.secondary, false, 14, context, true),
+      style: Manger().styleofText(ksecondrycolor, false, 14, context, true),
       value: _selectedsite,
       onChanged: (newvalue) async {
         setState(() {

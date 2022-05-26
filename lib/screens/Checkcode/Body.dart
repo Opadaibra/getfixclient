@@ -95,12 +95,8 @@ class _BodyState extends State<Body> {
                     title: Text(
                       'pin',
                       textAlign: TextAlign.center,
-                      style: Manger().styleofText(
-                          Theme.of(context).colorScheme.secondary,
-                          false,
-                          size.width * 0.05,
-                          context,
-                          true),
+                      style: Manger().styleofText(ksecondrycolor, false,
+                          size.width * 0.05, context, true),
                     ),
                     content: Text('your pin is $pin'),
                   );
@@ -180,12 +176,8 @@ class _BodyState extends State<Body> {
                 return AlertDialog(
                   title: LocaleText(
                     "resend",
-                    style: Manger().styleofText(
-                        Theme.of(context).colorScheme.secondary,
-                        false,
-                        18,
-                        context,
-                        false),
+                    style: Manger()
+                        .styleofText(ksecondrycolor, false, 18, context, false),
                     textAlign: TextAlign.center,
                   ),
                   content: LocaleText(

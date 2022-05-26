@@ -28,7 +28,7 @@
     "logout":"Log Out",
     "check":"",
     "checkwsbc":"check warranty state by barcode:",
-    "checws":"Check warranty state:",
+    "checws":"Check warranty state",
     "barcph":"Barcode Photo",
     "barcode":"Barcode",
     "email":"Email",
@@ -91,6 +91,9 @@
     "alert":"Alert",
     "emailalert":"The warranty will be verified via the following email:",
     "msgemptystate":"please fill all field first",
-    "fillrate":"Enter rate"
+    "fillrate":"Enter rate",
+    "color":"Apperance",
+    "pick":"Choose machin to fill request",
+    "pickview":"Choose machin to view requests"
 
 }

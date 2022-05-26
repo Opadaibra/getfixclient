@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:getfix/Mywidgits/modifedappbar.dart';
 import 'package:getfix/screens/constants/constant.dart';
 import 'package:getfix/screens/constants/titleoftextfield.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -59,106 +60,138 @@ class _AddsitebodybodyState extends State<Addsitebody> {
     //List _ad = [LocaleText("")];
 
     return SingleChildScrollView(
-      child: Container(
-        child: Column(
-          children: [
-            //header(size, context),
+      child: Column(
+        children: [
+          //header(size, context),
+          modiefedappbar(
+              size: size,
+              widgiticon: Icon(
+                Icons.location_on,
+                size: size.width * 0.12,
+                color: kbackground,
+              ),
+              localeText: LocaleText(
+                "site",
+                style: TextStyle(
+                    color: kbackground,
+                    fontWeight: FontWeight.bold,
+                    fontSize: size.width * 0.05),
+              )),
+          // Titleoftextfield(context: context, title: "governorate"),
+          defaultpadd,
+          governoratechoose(size, governorates, cities),
 
-            Titleoftextfield(context: context, title: "governorate"),
-            governoratechoose(size, governorates, cities),
-            Titleoftextfield(context: context, title: "city"),
-            citychoose(size, cities),
-            Container(
-              alignment: Alignment.center,
-              width: size.width * .9,
-              child: TextField(
-                minLines: 1,
-                maxLines: 5,
-                textAlign: TextAlign.start,
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    hintText: Locales.string(context, "street")
-                    // prefixIcon: Icon(Icons.camera_enhance_rounded)
-                    ),
-              ),
+          // Titleoftextfield(context: context, title: "city"),
+          defaultpadd,
+          citychoose(size, cities),
+          Container(
+            alignment: Alignment.center,
+            width: size.width * .9,
+            child: TextField(
+              minLines: 1,
+              maxLines: 5,
+              textAlign: TextAlign.start,
+              decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                  hintText: Locales.string(context, "street")
+                  // prefixIcon: Icon(Icons.camera_enhance_rounded)
+                  ),
             ),
-            Container(
-              alignment: Alignment.center,
-              width: size.width * .9,
-              child: TextField(
-                minLines: 1,
-                maxLines: 5,
-                textAlign: TextAlign.start,
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    hintText: Locales.string(context, "buildingadd")
-                    // prefixIcon: Icon(Icons.camera_enhance_rounded)
-                    ),
-              ),
+          ),
+          Container(
+            alignment: Alignment.center,
+            width: size.width * .9,
+            child: TextField(
+              minLines: 1,
+              maxLines: 5,
+              textAlign: TextAlign.start,
+              decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                  hintText: Locales.string(context, "buildingadd")
+                  // prefixIcon: Icon(Icons.camera_enhance_rounded)
+                  ),
             ),
-            Container(
-              alignment: Alignment.center,
-              width: size.width * .9,
-              child: TextField(
-                minLines: 1,
-                maxLines: 5,
-                textAlign: TextAlign.start,
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    hintText: Locales.string(context, "buildingno")
-                    // prefixIcon: Icon(Icons.camera_enhance_rounded)
-                    ),
-              ),
+          ),
+          Container(
+            alignment: Alignment.center,
+            width: size.width * .9,
+            child: TextField(
+              minLines: 1,
+              maxLines: 5,
+              textAlign: TextAlign.start,
+              decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                  hintText: Locales.string(context, "buildingno")
+                  // prefixIcon: Icon(Icons.camera_enhance_rounded)
+                  ),
             ),
-            Container(
-              alignment: Alignment.center,
-              width: size.width * .9,
-              child: TextField(
-                minLines: 1,
-                maxLines: 5,
-                textAlign: TextAlign.start,
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Colors.black, fontSize: 14),
-                    hintText: Locales.string(context, "floorno")
-                    // prefixIcon: Icon(Icons.camera_enhance_rounded)
-                    ),
-              ),
+          ),
+          Container(
+            alignment: Alignment.center,
+            width: size.width * .9,
+            child: TextField(
+              minLines: 1,
+              maxLines: 5,
+              textAlign: TextAlign.start,
+              decoration: InputDecoration(
+                  hintStyle: TextStyle(color: Colors.black, fontSize: 14),
+                  hintText: Locales.string(context, "floorno")
+                  // prefixIcon: Icon(Icons.camera_enhance_rounded)
+                  ),
             ),
-            SizedBox(height: size.height * 0.02),
-            sendbutton(size, context)
-          ],
-        ),
+          ),
+          SizedBox(height: size.height * 0.02),
+          sendbutton(size, context)
+        ],
       ),
     );
   }
 
   Container governoratechoose(Size size, List _governorates, List cities) {
     return Container(
-      width: size.width * 0.9,
-      child: DropdownButton(
-        iconEnabledColor: kprimarycolor,
-        icon: Icon(Icons.arrow_downward),
-        menuMaxHeight: size.height * 0.5,
-        //itemHeight: size.height * 0.2,
-        isExpanded: true,
-        style: Manger().styleofText(kprimarycolor, false, 14, context, true),
-        value: _selectedgovernorate,
-        onChanged: (newvalue) async {
-          setState(() {
-            _selectedgovernorate = newvalue;
-            updatecitylist(cities, _selectedgovernorate);
-          });
-        },
-        items: _governorates.map((governate) {
-          return DropdownMenuItem(
-            child: Text(
-              governate,
-              style: TextStyle(wordSpacing: 5),
-            ),
-            value: governate,
-          );
-        }).toList(),
-        hint: LocaleText("governorate"),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: kbackground,
+          boxShadow: [
+            BoxShadow(
+                color: ksecondrycolor, blurRadius: 20, offset: Offset(0, 10))
+          ]),
+      width: size.width * 0.8,
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+          borderRadius: BorderRadius.circular(18),
+
+          iconEnabledColor: kprimarycolor,
+          icon: Icon(
+            Icons.expand_circle_down_rounded,
+            size: size.width * 0.1,
+          ),
+          //    menuMaxHeight: size.height * 0.5,
+          //itemHeight: size.height * 0.2,
+          isExpanded: true,
+          style: Manger().styleofText(kprimarycolor, false, 14, context, true),
+          value: _selectedgovernorate,
+          onChanged: (newvalue) async {
+            setState(() {
+              _selectedgovernorate = newvalue;
+              updatecitylist(cities, _selectedgovernorate);
+            });
+          },
+          items: _governorates.map((governate) {
+            return DropdownMenuItem(
+              child: Text(
+                governate,
+                style: TextStyle(wordSpacing: 5),
+              ),
+              value: governate,
+            );
+          }).toList(),
+          hint: LocaleText(
+            "governorate",
+            style: TextStyle(color: kprimarycolor),
+          ),
+        ),
       ),
     );
   }
@@ -177,30 +210,44 @@ class _AddsitebodybodyState extends State<Addsitebody> {
 
   Container citychoose(Size size, List<dynamic> _cities) {
     return Container(
-      width: size.width * .9,
-      child: DropdownButton(
-        isExpanded: true,
-        // isDense: true,
-        icon: Icon(Icons.arrow_downward),
-        iconEnabledColor: kprimarycolor,
-        style: Manger().styleofText(kprimarycolor, false, 14, context, true),
-        menuMaxHeight: size.height * 0.5,
-        value: _selectedcity,
-        onChanged: (newvalue) async {
-          setState(() {
-            _selectedcity = newvalue;
-          });
-        },
-        items: _cities.map((city) {
-          return DropdownMenuItem(
-            child: Text(
-              city,
-              style: TextStyle(wordSpacing: 5),
-            ),
-            value: city,
-          );
-        }).toList(),
-        hint: LocaleText("city"),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: kbackground,
+          boxShadow: [
+            BoxShadow(
+                color: ksecondrycolor, blurRadius: 20, offset: Offset(0, 10))
+          ]),
+      width: size.width * 0.8,
+      padding: EdgeInsets.symmetric(horizontal: 10),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
+          borderRadius: BorderRadius.circular(18),
+          isExpanded: true,
+          // isDense: true,
+          icon: Icon(
+            Icons.expand_circle_down_rounded,
+            size: size.width * 0.1,
+          ),
+          iconEnabledColor: kprimarycolor,
+          style: Manger().styleofText(kprimarycolor, false, 14, context, true),
+          menuMaxHeight: size.height * 0.5,
+          value: _selectedcity,
+          onChanged: (newvalue) async {
+            setState(() {
+              _selectedcity = newvalue;
+            });
+          },
+          items: _cities.map((city) {
+            return DropdownMenuItem(
+              child: Text(
+                city,
+                style: TextStyle(wordSpacing: 5),
+              ),
+              value: city,
+            );
+          }).toList(),
+          hint: LocaleText("city", style: TextStyle(color: kprimarycolor)),
+        ),
       ),
     );
   }

@@ -12,12 +12,12 @@ class Maintnancerequest extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = Manger().getsize(context);
     Color primary = kprimarycolor;
-    Color secondary = Theme.of(context).colorScheme.secondary;
+
     Color backgroundcolor = kbackground;
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
-          'Images/whiteGetFix.png',
+          innerGreenGetFix,
           width: size.width * 0.5,
         ),
         backgroundColor: kprimarycolor,
@@ -31,7 +31,7 @@ class Maintnancerequest extends StatelessWidget {
       drawer: Workerdrawer(
           size: size,
           primary: primary,
-          secondary: secondary,
+          secondary: ksecondrycolor,
           backgroundcolor: backgroundcolor),
     );
   }

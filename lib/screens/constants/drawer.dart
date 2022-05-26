@@ -6,7 +6,7 @@ import 'package:getfix/screens/maintnancerequest/maintnancerequest.dart';
 import 'package:getfix/screens/rate/ratemaintenance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
-import 'package:getfix/screens/SettingsPage/Settings.dart';
+import 'package:getfix/screens/Settings/Settings.dart';
 import 'package:getfix/screens/checkwarrantystate/warranty.dart';
 import 'package:getfix/screens/constants/constant.dart';
 import 'package:getfix/screens/notificaton/notification.dart';
@@ -265,13 +265,13 @@ class WorkerdrawerState extends State<Workerdrawer> {
     return UserAccountsDrawerHeader(
       //currentAccountPictureSize: size * 0.18,
       currentAccountPicture: CircleAvatar(
-        backgroundColor: widget.secondary,
+        backgroundColor: ksecondrycolor,
       ),
       accountName: Text(
         "OpadaIbra",
         textAlign: TextAlign.start,
-        style: Manger().styleofText(widget.backgroundcolor, false,
-            widget.size.width * 0.05, context, false),
+        style: Manger().styleofText(
+            ksecondrycolor, false, widget.size.width * 0.05, context, false),
       ),
       accountEmail: Text(
         "Opadaibra@gmail.com",

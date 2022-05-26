@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:getfix/Mywidgits/modifedappbar.dart';
 import 'package:getfix/screens/constants/constant.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:fluttertoast/fluttertoast.dart';
 
 class Dashboardbody extends StatefulWidget {
@@ -30,82 +32,20 @@ class _DashboardbodyState extends State<Dashboardbody> {
     );
     return Column(
       children: [
-        Container(
-          height: size.height * 0.1,
-          width: size.width,
-          child: Stack(
-            children: [
-              Transform.translate(
-                offset: Offset(0, -2),
-                child: Container(
-                  height: size.height * 0.1 - 20,
-                  //    margin: EdgeInsetsDirectional.only(end: size.width * 0.25),
-                  decoration: BoxDecoration(
-                    borderRadius:
-                        BorderRadius.vertical(bottom: Radius.circular(20)),
-                    color: kprimarycolor,
-                  ),
-                ),
-              ),
-              Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Transform.translate(
-                    offset: Offset(-size.width * 0.3, -size.height * 0.025),
-                    child: Container(
-                      // width: size.width * 0.25,
-                      alignment: Alignment.bottomLeft,
-                      margin:
-                          EdgeInsets.symmetric(horizontal: size.width * 0.38),
-                      height: size.height * 0.06,
-                      decoration: BoxDecoration(
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(120)),
-                          color: kbackground),
-                    ),
-                  )),
-              Positioned(
-                bottom: 0,
-                left: 0,
-                right: 0,
-                child: Transform.translate(
-                    offset: Offset(-size.width * 0.3, 10),
-                    child: Container(
-                      // width: size.width * 0.25,
-                      //alignment: Alignment.bottomLeft,
-                      margin:
-                          EdgeInsets.symmetric(horizontal: size.width * 0.4),
-                      height: size.height * 0.09,
-                      decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(blurRadius: 30, color: kprimarycolor)
-                          ],
-                          borderRadius: BorderRadius.circular(100),
-                          color: kprimarycolor),
-                      child: IconButton(
-                        onPressed: () => Scaffold.of(context).openDrawer(),
-                        icon: Icon(
-                          Icons.home,
-                          color: kbackground,
-                          size: size.width * 0.1,
-                        ),
-                      ),
-                    )),
-              ),
-              Positioned(
-                  left: size.width * 0.5,
-                  bottom: size.height * 0.03,
-                  child: LocaleText(
-                    "showtasks",
-                    style: TextStyle(
-                        color: kbackground,
-                        fontWeight: FontWeight.bold,
-                        fontSize: size.width * 0.05),
-                  ))
-            ],
-          ),
-        ),
+        modiefedappbar(
+            size: size,
+            widgiticon: Icon(
+              Icons.home,
+              size: size.width * 0.12,
+              color: kbackground,
+            ),
+            localeText: LocaleText(
+              "showtasks",
+              style: TextStyle(
+                  color: kbackground,
+                  fontWeight: FontWeight.bold,
+                  fontSize: size.width * 0.05),
+            )),
         Column(
           children: [
             //  headline(context),
@@ -161,64 +101,81 @@ class _DashboardbodyState extends State<Dashboardbody> {
             : null);
   }
 
-  Row machin(BuildContext context, Size size) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        IconButton(
-          icon: Image.asset(
-            "Images/freazer.png",
-            color: arr[0] == true
-                ? kprimarycolor
-                : Theme.of(context).colorScheme.secondary,
+  Container machin(BuildContext context, Size size) {
+    return Container(
+      height: size.height * 0.2,
+      margin: EdgeInsets.symmetric(horizontal: 20),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: kbackground,
+          boxShadow: [
+            BoxShadow(
+                blurRadius: 20, color: ksecondrycolor, offset: Offset(0, 10))
+          ]),
+      child: Column(
+        children: [
+          Padding(padding: EdgeInsets.all(5)),
+          LocaleText(
+            "pickview",
+            style: TextStyle(
+                color: kprimarycolor,
+                fontSize: 18,
+                fontWeight: FontWeight.bold),
           ),
-          onPressed: () {
-            setState(() {
-              arr = [!arr[0], false, false];
-            });
-          },
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              IconButton(
+                icon: Image.asset(
+                  "Images/freazer.png",
+                  color: arr[0] == true ? kprimarycolor : ksecondrycolor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    arr = [!arr[0], false, false];
+                  });
+                },
 
-          iconSize: size.width * 0.2,
-          splashRadius: size.width * 0.1,
-          highlightColor: kprimarycolor,
+                iconSize: size.width * 0.2,
+                splashRadius: size.width * 0.1,
+                highlightColor: kprimarycolor,
 
-          //   splashColor: kprimarycolor,
-        ),
-        IconButton(
-          icon: Image.asset(
-            "Images/wachmachine.png",
-            color: arr[1] == true
-                ? kprimarycolor
-                : Theme.of(context).colorScheme.secondary,
+                //   splashColor: kprimarycolor,
+              ),
+              IconButton(
+                icon: Image.asset(
+                  "Images/wachmachine.png",
+                  color: arr[1] == true ? kprimarycolor : ksecondrycolor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    arr = [false, !arr[1], false];
+                    //  wachmachin = !wachmachin;
+                  });
+                },
+                iconSize: size.width * 0.2,
+                splashRadius: size.width * 0.1,
+                highlightColor: kprimarycolor,
+              ),
+              IconButton(
+                icon: Image.asset(
+                  "Images/aircooler.png",
+                  color: arr[2] == true ? kprimarycolor : ksecondrycolor,
+                ),
+                onPressed: () {
+                  setState(() {
+                    // aircooler = !aircooler;
+                    arr = [false, false, !arr[2]];
+                  });
+                },
+                iconSize: size.width * 0.2,
+                splashRadius: size.width * 0.1,
+                highlightColor: kprimarycolor,
+              ),
+            ],
           ),
-          onPressed: () {
-            setState(() {
-              arr = [false, !arr[1], false];
-              //  wachmachin = !wachmachin;
-            });
-          },
-          iconSize: size.width * 0.2,
-          splashRadius: size.width * 0.1,
-          highlightColor: kprimarycolor,
-        ),
-        IconButton(
-          icon: Image.asset(
-            "Images/aircooler.png",
-            color: arr[2] == true
-                ? kprimarycolor
-                : Theme.of(context).colorScheme.secondary,
-          ),
-          onPressed: () {
-            setState(() {
-              // aircooler = !aircooler;
-              arr = [false, false, !arr[2]];
-            });
-          },
-          iconSize: size.width * 0.2,
-          splashRadius: size.width * 0.1,
-          highlightColor: kprimarycolor,
-        ),
-      ],
+        ],
+      ),
     );
   }
 
@@ -261,11 +218,7 @@ class _DashboardbodyState extends State<Dashboardbody> {
                     title: LocaleText(
                       "detailes",
                       style: Manger().styleofText(
-                          Theme.of(context).colorScheme.secondary,
-                          false,
-                          18,
-                          context,
-                          false),
+                          ksecondrycolor, false, 18, context, false),
                       textAlign: TextAlign.center,
                     ),
                     content: Column(
@@ -336,10 +289,17 @@ class _DashboardbodyState extends State<Dashboardbody> {
                 });
           },
           child: Container(
-            width: size.width * .95,
+            width: size.width * .85,
             decoration: BoxDecoration(
-                border: Border.all(width: 1.5, color: kprimarycolor),
-                borderRadius: BorderRadius.circular(20)),
+                // border: Border.all(width: 1.5, color: kprimarycolor),
+                borderRadius: BorderRadius.circular(20),
+                color: kbackground,
+                boxShadow: [
+                  BoxShadow(
+                    color: ksecondrycolor,
+                    blurRadius: 25,
+                  )
+                ]),
             child: Column(
               children: [
                 Container(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_locales/flutter_locales.dart';
+import 'package:getfix/Mywidgits/modifedappbar.dart';
 import 'package:getfix/screens/constants/constant.dart';
 
 class warrantystatebody extends StatefulWidget {
@@ -25,8 +26,22 @@ class _warrantystatebodyState extends State<warrantystatebody> {
       child: Container(
         child: Column(
           children: [
+            modiefedappbar(
+                size: size,
+                widgiticon: Icon(
+                  Icons.qr_code,
+                  size: size.width * 0.12,
+                  color: kbackground,
+                ),
+                localeText: LocaleText(
+                  "checws",
+                  style: TextStyle(
+                      color: kbackground,
+                      fontWeight: FontWeight.bold,
+                      fontSize: size.width * 0.05),
+                )),
             //  padding2(size, 0.05),
-            header(context, size),
+            //  header(context, size),
             Manger().sizedBox(0, 0.05, context),
             entity(size, context),
             Manger().sizedBox(0, 0.01, context),
@@ -319,11 +334,7 @@ class _warrantystatebodyState extends State<warrantystatebody> {
                           Text(
                             "opadaibra@gmail.com",
                             style: Manger().styleofText(
-                                Theme.of(context).colorScheme.secondary,
-                                false,
-                                14,
-                                context,
-                                false),
+                                ksecondrycolor, false, 14, context, false),
                           )
                         ],
                       ));

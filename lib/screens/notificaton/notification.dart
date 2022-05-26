@@ -10,9 +10,7 @@ class MyyNotification extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Manger().getsize(context);
-    Color primary = kprimarycolor;
-    Color secondary = Theme.of(context).colorScheme.secondary;
-    Color backgroundcolor = kbackground;
+  
     return Scaffold(
       /*dashboardappbar().Appbarwigit(context),*/
       appBar: AppBar(
@@ -42,9 +40,9 @@ class MyyNotification extends StatelessWidget {
       drawerEdgeDragWidth: MediaQuery.of(context).size.width,
       drawer: Workerdrawer(
           size: size,
-          primary: primary,
-          secondary: secondary,
-          backgroundcolor: backgroundcolor),
+          primary: kprimarycolor,
+          secondary: ksecondrycolor,
+          backgroundcolor: kbackground),
     );
   }
 }

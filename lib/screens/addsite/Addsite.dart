@@ -9,11 +9,18 @@ class Addsite extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = Manger().getsize(context);
-    Color primary = kprimarycolor;
-    Color secondary = Theme.of(context).colorScheme.secondary;
-    Color backgroundcolor = kbackground;
     return Scaffold(
-      appBar: Customeappbar(),
+      appBar: AppBar(
+        title: Image.asset(
+          innerGreenGetFix,
+          width: size.width * 0.6,
+        ),
+        centerTitle: true,
+        backgroundColor: kprimarycolor,
+        toolbarHeight: size.height * 0.15,
+        automaticallyImplyLeading: false,
+        elevation: 0,
+      ), //ustomeappbar(),
       // dashboardappbar().Appbarwigit(context),
       body: Stack(
         children: [
@@ -28,9 +35,9 @@ class Addsite extends StatelessWidget {
 
       drawer: Workerdrawer(
           size: size,
-          primary: primary,
-          secondary: secondary,
-          backgroundcolor: backgroundcolor),
+          primary: kprimarycolor,
+          secondary: ksecondrycolor,
+          backgroundcolor: kbackground),
     );
   }
 }
